@@ -10,16 +10,24 @@ if($row['store_name']==$_SESSION['login'])
 {
 	if($row['counter_id']==1)
 	{
-		$a=$row['lead_time'];
+		$a = $row['lead_time'];
 	}
 	else if($row['counter_id']==2)
 	{
-		$b=$row['lead_time'];
+		$b = $row['lead_time'];
 	}
 	else
 	{
-		$c=$row['lead_time'];
+		$c = $row['lead_time'];
 	}		
 }
 }
+$myObj = new stdClass();
+$myObj->name = $a;
+$myObj->age = $b;
+$myObj->city = $c;
+
+$myJSON = json_encode($myObj);
+
+echo $myJSON;
 ?>

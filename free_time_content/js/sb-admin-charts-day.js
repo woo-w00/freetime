@@ -4,6 +4,13 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 // -- Area Chart Example
 
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+		
+		
 // -- Bar Chart Example 요일별 대기시간 
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
@@ -46,3 +53,11 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+
+
+   }
+};
+
+xmlhttp.open("GET", "chartday.php", true);
+xmlhttp.send();
+

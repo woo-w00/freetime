@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<?php
 
-session_start();
-include('db_connect.php');
-$query = "SELECT counter_id, counter.store_id, select_name, store_name, lead_time FROM counter LEFT JOIN store ON counter.store_id = store.store_id";									
-$result = mysqli_query($con, $query); 
-while($row = mysqli_fetch_array($result))
-{
-if($row['store_name']==$_SESSION['login'])
-{
-	if($row['counter_id']==1)
-	{
-		$a=$row['lead_time'];
-	}
-	else if($row['counter_id']==2)
-	{
-		$b=$row['lead_time'];
-	}
-	else
-	{
-		$c=$row['lead_time'];
-	}		
-}
-}
-?>
 
 <head>
   <meta charset="utf-8">
@@ -115,14 +91,13 @@ if($row['store_name']==$_SESSION['login'])
 		  
 		  
 		  
-		  
+		  <p id="denmo">
 		  <!-- Example Pie Chart Card-->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fa fa-pie-chart"></i>업무별 평균 대기시간</div>
             <div class="card-body">
               <canvas id="myPieChart" width="200%" height="200"></canvas>
-
 
             </div>
             <div class="card-footer small text-muted">Updated : <?php echo date("H:iA, D, m/d"); ?></div>
@@ -131,7 +106,7 @@ if($row['store_name']==$_SESSION['login'])
         </div>
       </div>
 	  
-	  
+	  </p>
 	  
 	  
         </div>
@@ -184,5 +159,4 @@ if($row['store_name']==$_SESSION['login'])
 <script src="js/sb-admin-charts-choice.js?ver=1"></script>
   </div>
 </body>
-
 </html>

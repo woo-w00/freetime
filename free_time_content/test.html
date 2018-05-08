@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<script src="//code.jquery.com/jquery.min.js"></script>
+
+<body>
+	<span id="view"></span>
+</body>
+
+
+<script>
+	var dd =4;
+                $.ajax({
+                        url : 'test.php?num='+dd + '&num2='+dd,
+                        type : 'get',
+                        success : function(evt){
+				var json = JSON.parse(evt);
+				console.log(json);
+                                console.log(evt);
+			$('#view').text(evt);
+	//			console.log(window);
+                        }
+                });
+</script>
+
+</html>

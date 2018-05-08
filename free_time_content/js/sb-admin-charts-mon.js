@@ -3,11 +3,20 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 // -- Area Chart Example
+
+var xmlhttp = new XMLHttpRequest();
+
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+		
+		
+
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["4/14", "4/15", "4/16", "4/17", "4/18", "4/19", "4/20", "4/21", "4/22", "4/23", "4/24", "4/25", "4/26"],
+    labels: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
     datasets: [{
       label: "Sessions",
       lineTension: 0.3,
@@ -20,7 +29,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBackgroundColor: "rgba(2,117,216,1)",
       pointHitRadius: 20,
       pointBorderWidth: 2,
-      data: [10000, 30162, 26263, 18394, 18287, 28682, 31274, 33259, 25849, 24159, 32651, 31984, 38451],
+      data: [myObj.one,myObj.two,myObj.three,myObj.four,myObj.five,myObj.six,myObj.seven,myObj.eight,myObj.nine,myObj.ten,myObj.eleven,myObj.twleven],
     }],
   },
   options: {
@@ -39,7 +48,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40000,
+          max: 100,
           maxTicksLimit: 5
         },
         gridLines: {
@@ -52,3 +61,11 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+
+
+    }
+};
+
+xmlhttp.open("GET", "chartmon.php", true);
+xmlhttp.send();
+
